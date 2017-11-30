@@ -4,7 +4,7 @@ function precede ($pop, $input) {
     	$sign1 = ["+","-","*","/"];
     	$sign2 = ["(",")","#"];
 
-    	if (array_search($pop, $sign1) && array_search($input, $sign2)) {
+    	if (is_int(array_search($pop, $sign1)) && is_int(array_search($input, $sign1))) {
     		if ("+" == $input || "-" == $input) {
     			return ">";
     		} else {
@@ -14,13 +14,13 @@ function precede ($pop, $input) {
     				return ">";
     			}
     		}
-    	} else if (array_search($pop, $sign2) && array_search($input, $sign1)) {
+    	} else if (is_int(array_search($pop, $sign2)) && is_int(array_search($input, $sign1))) {
     		if ("(" == $pop || "#" == $pop) {
     			return "<";
     		} else {
     			return ">";
     		}
-    	} else if (array_search($pop, $sign1) && array_search($input, $sign2)) {
+    	} else if (is_int(array_search($pop, $sign1)) && is_int(array_search($input, $sign2))) {
     		if ("(" == $input) {
     			return "<";
     		} else {
@@ -59,27 +59,27 @@ function precede ($pop, $input) {
 
     $input = file_get_contents("./test.txt");
     $inputs = explode(" ", $input);
-    print_r ($inputs);
+    
+    $v = array_shift($inputs);
 
-    foreach ($inputs as $v) {
-    	# code...
-    	if ("#" == $v) {
+    while (true) {
+    	if (0 == count($optr)) {
     		break;
     	} else {
     		if (is_numeric($v)) {
     			array_push($opnd, $v);
-    			print_r($opnd);
+                $v = array_shift($inputs);
     			continue;
     		} else {
-    			switch (precede(array_pop($optr),$v)) {
-    				case "<": { array_push($optr, $v); continue; }
-    				case "=": { array_pop($optr); continue; }
-    				case ">": { $relation = arrap_pop($optr);$b = array_pop($opnd); $a = array_pop($opnd); array_push($opnd, operate($b,$relation,$a)); continue; }
+    			switch (precede(end($optr),$v)) {
+    				case "<": { array_push($optr, $v); $v = array_shift($inputs); continue; }
+    				case "=": { array_pop($optr); $v = array_shift($inputs); continue; }
+    				case ">": { $relation = array_pop($optr);$b = array_pop($opnd); $a = array_pop($opnd); array_push($opnd, operate($a,$relation,$b)); continue; }
     			}
     		}
     	}
     }
 
-    print_r($opnd);
+    echo array_pop($opnd);
 
     
