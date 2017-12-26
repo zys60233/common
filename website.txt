@@ -1,0 +1,3 @@
+https://www.cnblogs.com/fengyumeng/p/8001774.html    安装xfce4后自启动
+
+http://blog.csdn.net/smstong/article/details/44802989  安装xfce4桌面系统
