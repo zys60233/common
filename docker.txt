@@ -1,0 +1,13 @@
+保存对容器的修改:
+    docker commit [容器id前三位或前四位] [新镜像名称]
+创建容器:
+    docker run -dit -p [主机ip]:[主机端口]:[容器端口] [镜像名称]
+
+进入容器: 
+    docker exec -it [容器id前四位] bash
+
+搜索镜像: 
+    docker search [镜像名称]
+
+下载镜像:
+    docker pull [镜像名称]
