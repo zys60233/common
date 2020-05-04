@@ -4,27 +4,7 @@
 
 2. 进入bld，执行cmake命令
 
-   cmake .. -DCMAKE-INSTALL-PREFIX=/usr/local/mysql \
-
-   -DMYSQL_DATADIR=/usr/local/mysql/data \
-
-   -DSYSCONFDIR=/usr/local/mysql/conf \
-
-   -DDEFAULT_CHARSET=utf8 \
-
-   -DDEFAULT_COLLATION=utf8_general_ci \
-
-   -DWITH_INNOBASE_STORAGE_ENGINE=1 \
-
-   -DWITH_MYISAM_STORAGE_ENGINE=1 \c
-
-   -DENABLED_LOCAL_INFILE=1 \
-
-   -DEXTRA_CHARSETS=all \
-
-   -DDOWNLOAD_BOOST=1 \
-
-   -DWITH_BOOST=/usr/local/mysql/boost
+   cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/usr/local/mysql/data -DSYSCONFDIR=/usr/local/mysql/conf -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_MYISAM_STORAGE_ENGINE=1 -DENABLED_LOCAL_INFILE=1 -DWITH_EXTRA_CHARSETS=all -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/mysql/boost
 
 3. 添加用户
 
